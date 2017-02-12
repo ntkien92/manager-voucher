@@ -34,15 +34,48 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+# 
+# Soft delete
+gem 'paranoia', '~> 2.2'
+
+gem 'devise'
+
+
+gem "font-awesome-rails"
+
+gem 'bootstrap-sass', '~> 3.3.6'
+
+gem 'kaminari'
+
+gem 'ransack'
+
+gem "auto_strip_attributes", "~> 2.1"
+
+# User slim
+gem 'html2slim'
+gem 'slim-rails'
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
+gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'rspec-rails', '~> 3.5'
+  gem 'pry-byebug'
+  gem 'web-console', '~> 2.0'
+  gem 'annotate'
+  ##### SimpleCov #####
+  gem 'simplecov', require: false
+  gem 'pry-rails', '~> 0.3.4'
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'rails-controller-testing'
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
+  gem 'web-console', '~> 2.0'
   gem 'listen', '~> 3.0.5'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
