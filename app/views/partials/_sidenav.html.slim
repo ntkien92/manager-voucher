@@ -1,0 +1,119 @@
+.col-md-3.left_col
+  .left_col.scroll-view
+    .clearfix
+    .profile
+      .profile_pic
+        = image_tag "user.png", :class => "img-circle profile_img"
+      .profile_info
+        span
+          | Welcome,
+        h2
+          = current_department.name
+    br
+    #sidebar-menu.main_menu_side.hidden-print.main_menu
+      .menu_section
+        h3
+          | General
+        ul.nav.side-menu
+          li
+            a
+              i.fa.fa-users
+              = I18n.t('users.name')
+              span.fa.fa-chevron-down
+            ul.nav.child_menu[style="display: none"]
+              li
+                = link_to I18n.t('users.action.index'), dashboards_path, method: :get
+              li
+                = link_to I18n.t('users.action.new'), dashboards_path, method: :get
+          / li
+            a
+              i.fa.fa-desktop
+              = I18n.t('titles.name')
+              span.fa.fa-chevron-down
+            ul.nav.child_menu[style="display: none"]
+              li
+                = link_to I18n.t('titles.action.index'), titles_path, method: :get
+              li
+                = link_to I18n.t('titles.action.new'), new_title_path, method: :get
+          / li
+            a
+              i.fa.fa-tags
+              = I18n.t('tags.name')
+              span.fa.fa-chevron-down
+            ul.nav.child_menu[style="display: none"]
+              li
+                = link_to I18n.t('tags.action.index'), tags_path, method: :get
+              li
+                = link_to I18n.t('tags.action.new'), new_tag_path, method: :get
+          / li
+            a
+              i.fa.fa-home
+              = I18n.t('shops.name')
+              span.fa.fa-chevron-down
+            ul.nav.child_menu[style="display: none"]
+              li
+                = link_to I18n.t('shops.action.index'), shops_path, method: :get
+          / li
+            a
+              i.fa.fa-exclamation-triangle
+              = I18n.t('reports.name')
+              span.fa.fa-chevron-down
+            ul.nav.child_menu[style="display: none"]
+              li
+                = link_to I18n.t('reports.action.index'), reports_path, method: :get
+          / li
+            a
+              i.fa.fa-eye
+              = I18n.t('pickups.name')
+              span.fa.fa-chevron-down
+            ul.nav.child_menu[style="display: none"]
+              li
+                = link_to I18n.t('pickups.action.index'), pickups_path, method: :get
+              li
+                = link_to I18n.t('pickups.action.new'), search_shop_path, method: :get
+          / li
+            a
+              i.fa.fa-comments-o
+              = I18n.t('comments.name')
+              span.fa.fa-chevron-down
+            ul.nav.child_menu[style="display: none"]
+              li
+                = link_to I18n.t('comments.action.index'), comments_path, method: :get
+          / li
+            a
+              i.fa.fa-bookmark
+              = I18n.t('topics.name')
+              span.fa.fa-chevron-down
+            ul.nav.child_menu[style="display: none"]
+              li
+                = link_to I18n.t('topics.action.index'), topics_path, method: :get
+              li
+                = link_to I18n.t('topics.action.new'), new_topic_path, method: :get
+          / li
+            a
+              i.fa.fa-book
+              = I18n.t('subscriptions.name')
+              span.fa.fa-chevron-down
+            ul.nav.child_menu[style="display: none"]
+              li
+                = link_to I18n.t('subscriptions.action.index'), subscriptions_path, method: :get
+          / li
+            a
+              i.fa.fa-paper-plane
+              = I18n.t('notifications.name')
+              span.fa.fa-chevron-down
+            ul.nav.child_menu[style="display: none"]
+              li
+                = link_to I18n.t('notifications.action.index'), notifications_path, method: :get
+              li
+                = link_to I18n.t('notifications.action.new'), new_notification_path, method: :get
+          / li
+            a
+              i.fa.fa-mobile
+              = I18n.t('versions.name')
+              span.fa.fa-chevron-down
+            ul.nav.child_menu[style="display: none"]
+              li
+                = link_to I18n.t('versions.action.index'), required_versions_path, method: :get
+              li
+                = link_to I18n.t('versions.action.new'), new_required_version_path, method: :get

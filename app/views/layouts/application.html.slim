@@ -14,8 +14,8 @@ html
         div align="center" id="flash" class="alert alert-xkey"
           = value
       .main_container
-        / = render "partials/sidenav"
-        / = render "partials/topnav"
+        = render "partials/sidenav"
+        = render "partials/topnav"
         = yield
-        / = render "partials/footer"
-        / = javascript_include_tag 'custom', 'data-turbolinks-track' => true
+        = render "partials/footer"
+        = javascript_include_tag 'custom', 'data-turbolinks-track' => true

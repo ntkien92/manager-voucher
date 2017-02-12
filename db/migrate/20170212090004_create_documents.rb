@@ -6,7 +6,7 @@ class CreateDocuments < ActiveRecord::Migration[5.0]
       t.text :content
 
       t.belongs_to :department, add_index: true
-
+      t.datetime :deleted_at
       t.timestamps
     end
   end

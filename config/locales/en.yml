@@ -20,7 +20,13 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  title: Manage Documents
   hello: "Hello world"
+  users:
+    name: Name
+    action:
+      index: Index
+      new: New
   devise:
     sessions:
       new:
