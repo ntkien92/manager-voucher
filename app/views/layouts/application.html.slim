@@ -1,0 +1,21 @@
+doctype html
+html
+  head
+    meta[http-equiv="content-type" content="text/html;charset=UTF-8"]
+    title
+      = content_for?(:title) ? yield(:title) : I18n.t('title')
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    meta[name="viewport" content="width=device-width, initial-scale=1"]
+  body.nav-md
+    .container.body
+      - flash.each do |key, value|
+        div align="center" id="flash" class="alert alert-xkey"
+          = value
+      .main_container
+        / = render "partials/sidenav"
+        / = render "partials/topnav"
+        = yield
+        / = render "partials/footer"
+        / = javascript_include_tag 'custom', 'data-turbolinks-track' => true

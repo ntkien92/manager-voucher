@@ -21,3 +21,8 @@
 
 en:
   hello: "Hello world"
+  devise:
+    sessions:
+      new:
+        title: Login
+        login: Login
