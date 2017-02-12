@@ -24,5 +24,7 @@ en:
   devise:
     sessions:
       new:
-        title: Login
+        title: Login Form
         login: Login
+        email: Email
+        password: Password
