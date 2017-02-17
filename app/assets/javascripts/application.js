@@ -12,6 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require turbolinks
+
+//= require typeahead.bundle.min.js
+//= require cable.js
+//= require flash.js 
+
 //= require bootstrap-sprockets
-//= require_tree .

@@ -4,7 +4,7 @@ div.right_col role="main"
       .x_panel
         .x_title
           h2
-            = I18n.t('tags.index.title')
+            = I18n.t('documents.index.title')
           ul.nav.navbar-right.panel_toolbox
             li
               a.collapse-link
@@ -17,7 +17,7 @@ div.right_col role="main"
           .row
             / = search_form_for @q, html: {class: 'form-horizontal form-label-left form-button-hidden'} do |f|
               .col-sm-4.col-md-4.col-sm-4.col-xs-4
-                = f.label :content_cont, I18n.t('tags.index.search.content')
+                = f.label :content_cont, I18n.t('documents.index.search.content')
                 = f.search_field :content_cont, class: 'form-control input-sm'
               .clearfix
               .col-sm-1
@@ -29,34 +29,34 @@ div.right_col role="main"
               thead
                 tr
                   th.table-column-id
-                    = I18n.t('tags.column.id')
+                    = I18n.t('documents.column.id')
                   th
-                    = I18n.t('tags.column.content')
+                    = I18n.t('documents.column.content')
                   th.table-column-action
-                    = I18n.t('tags.column.action')
+                    = I18n.t('documents.column.action')
                 tbody
-                  / - @tags.each do |tag|
+                  - @documents.each do |document|
                     tr
                       td
-                        = tag.id
+                        = document.id
                       td
-                        = tag.content
+                        = document.content
                       td
                         ul
                           li
-                            = link_to tag, class: 'btn btn-primary btn-xs btn-custom'
+                            = link_to document, class: 'btn btn-primary btn-xs btn-custom'
                               i.fa.fa-folder.fa-custom
-                              = I18n.t('tags.action.show')
+                              = I18n.t('action.show')
                           li
-                            = link_to edit_tag_path(tag), class: 'btn btn-info btn-xs btn-custom'
+                            = link_to edit_document_path(document), class: 'btn btn-info btn-xs btn-custom'
                               i.fa.fa-pencil.fa-custom
-                              = I18n.t('tags.action.edit')
+                              = I18n.t('action.edit')
                           li
-                            = link_to tag, class: 'btn btn-danger btn-xs btn-custom', data: { confirm: I18n.t('tags.index.confirm') }, method: :delete
+                            = link_to document, class: 'btn btn-danger btn-xs btn-custom', data: { confirm: I18n.t('documents.index.confirm') }, method: :delete
                               i.fa.fa-trash-o.fa-custom
-                              = I18n.t('tags.action.destroy')
+                              = I18n.t('action.destroy')
           .row
             .col-sm-6
-              / = paginate @tags, :window => 1
-          / = link_to I18n.t('tags.action.new'), new_tag_path, class: 'btn-info input-sm'
+              / = paginate @documents, :window => 1
+          / = link_to I18n.t('documents.action.new'), new_document_path, class: 'btn-info input-sm'
 

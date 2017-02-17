@@ -27,6 +27,28 @@ en:
     action:
       index: Index
       new: New
+  action:
+    show: Show
+    edit: Edit
+    destroy: Destroy
+    back: Back
+  documents:
+    send_document: Send document
+    index:
+      title: List document
+    column:
+      id: Id
+      content: Content
+      title: Title
+      action: Action
+      name: Name sender
+      department: Departments
+    action:
+      edit: Edit
+    form:
+      cancel: Cancel
+      submit: Submit
+      title: Documents
   devise:
     sessions:
       new:

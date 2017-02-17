@@ -18,13 +18,13 @@
           li
             a
               i.fa.fa-users
-              = I18n.t('users.name')
+              = I18n.t('documents.send_document')
               span.fa.fa-chevron-down
             ul.nav.child_menu[style="display: none"]
               li
-                = link_to I18n.t('users.action.index'), dashboards_path, method: :get
+                = link_to I18n.t('users.action.index'), documents_path, method: :get
               li
-                = link_to I18n.t('users.action.new'), dashboards_path, method: :get
+                = link_to I18n.t('users.action.new'), new_document_path, method: :get
           / li
             a
               i.fa.fa-desktop

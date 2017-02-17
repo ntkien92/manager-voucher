@@ -1,0 +1,49 @@
+div.right_col role="main"
+  .row
+    .col-md-offset-1.col-md-9.col-xs-12
+      .x_panel
+        .x_title
+          h2
+            = I18n.t('documents.form.title')
+          ul.nav.navbar-right.panel_toolbox
+            li
+              a.collapse-link
+                i.fa.fa-chevron-up
+            li
+              a.close-link
+                i.fa.fa-close
+          .clearfix
+        .x_content
+          br
+          .table-responsive
+            table#datatable-buttons.table.table-striped.table-bordered
+              tbody
+                tr
+                  td.td-name
+                    = I18n.t('documents.column.title')
+                  td
+                    = @document.title
+                tr
+                  td.td-name
+                    = I18n.t('documents.column.content')
+                  td
+                    = @document.content
+                tr
+                  td.td-name
+                    = I18n.t('documents.column.name')
+                  td
+                    = @document.name
+                tr
+                  td.td-name
+                    = I18n.t('documents.column.department')
+                  td
+                    - @document.department_docments.each do |department_document|
+                      = department_document.department.name
+                      br
+          .ln_solid
+          .row
+            .form-group
+              .col-md-9.col-sm-9.col-xs-12.col-md-offset-3
+                = link_to I18n.t('action.back'), documents_path, class: 'btn btn-primary'
+                = link_to I18n.t('action.edit'), edit_document_path(@document),  class: 'btn btn-warning'
+    .clearfix
