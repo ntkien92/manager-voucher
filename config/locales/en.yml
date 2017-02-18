@@ -32,10 +32,22 @@ en:
     edit: Edit
     destroy: Destroy
     back: Back
+    index: Index
+    new: New
+    approval: Approval
+    home: Home
+  dashboards:
+    title: Home
+    announce: "You have %{number} documents need approval"
   documents:
     send_document: Send document
     index:
       title: List document
+      search:
+        content: Content
+        status: Status
+        start_date: Start Date
+        end_date: End Date
     column:
       id: Id
       content: Content
@@ -43,12 +55,33 @@ en:
       action: Action
       name: Name sender
       department: Departments
+      status: Status
+      send_date: Send Date
     action:
       edit: Edit
     form:
       cancel: Cancel
       submit: Submit
       title: Documents
+  department_documents:
+    receive_document: Receive document
+    status: 
+      inprogres: Inprogres
+      approval: Approval
+    column:
+      id: Id
+      content: Content
+      action: Action
+      name: Receive Name
+      status: Status
+      department: Department
+      receive_date: Receive Date
+      send_date: Send Date
+    index:
+      search:
+        content: Content
+        department: Department
+        status: Status
   devise:
     sessions:
       new:
@@ -56,3 +89,9 @@ en:
         login: Login
         email: Email
         password: Password
+  topnav:
+    logout: Logout
+  home: Home
+  status: 
+    inprogres: Inprogres
+    approval: Approval

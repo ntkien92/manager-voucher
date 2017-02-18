@@ -9,3 +9,15 @@
 10.times do |n|
   department = Department.find_or_create_by(name: "Phong ban #{n + 1}")
 end
+
+10.times do |n|
+  user = User.create(email: "test+#{n+1}@gmail.com", password: '12345678', department_id: "#{n+1}".to_i)
+end
+
+1000.times do |n|
+  Document.create(title: "Title #{n+1}", content: "Content #{n+1}", department_id: rand(1..10))
+end
+
+10000.times do |n|
+  DepartmentDocument.create(document_id: rand(1..1000), department_id: rand(1..10))
+end

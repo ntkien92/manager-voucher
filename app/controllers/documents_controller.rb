@@ -5,7 +5,8 @@ class DocumentsController < ApplicationController
   # GET /documents
   # GET /documents.json
   def index
-    @documents = current_department.documents
+    @q = current_department.documents.ransack(params[:q])
+    @documents = @q.result.distinct(:true).includes(department_documents: :department).joins(:department_documents).order(id: :desc).page(params[:page])
   end
 
   # GET /documents/1
@@ -20,7 +21,7 @@ class DocumentsController < ApplicationController
 
   # GET /documents/1/edit
   def edit
-    @department_ids = @document.department_docments.map { |department_document| department_document.department_id }
+    @department_ids = @document.department_documents.map { |department_document| department_document.department_id }
   end
 
   # POST /documents
@@ -67,7 +68,7 @@ class DocumentsController < ApplicationController
     end
 
     def set_department
-      @departments = Department.all
+      @departments = Department.where.not(id: current_department.id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -82,7 +83,7 @@ class DocumentsController < ApplicationController
     def add_department(department_params)
       return if department_params.blank?
       department_params.each do |department|
-        @document.department_docments.create(department_id: department)
+        @document.department_documents.create(department_id: department) if department.present?
       end
     end
 end

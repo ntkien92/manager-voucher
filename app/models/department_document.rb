@@ -11,15 +11,17 @@
 #  updated_at    :datetime         not null
 #
 
-class DepartmentDocment < ApplicationRecord
+class DepartmentDocument < ApplicationRecord
   # == Constants ============================================================
-
+  INPROGRES = 'inprogres'
+  APPROVAL = 'approval'
   # == Attributes ===========================================================
-
+  enum status: %w(inprogres approval)
   # == Extensions ===========================================================
 
   # == Relationships ========================================================
   belongs_to :department
+  belongs_to :document
   # == Validations ==========================================================
 
   # == Scopes ===============================================================

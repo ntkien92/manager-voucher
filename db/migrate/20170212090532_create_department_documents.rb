@@ -1,8 +1,9 @@
-class CreateDepartmentDocments < ActiveRecord::Migration[5.0]
+class CreateDepartmentDocuments < ActiveRecord::Migration[5.0]
   def change
-    create_table :department_docments do |t|
+    create_table :department_documents do |t|
       t.integer :status, default: 0
       t.string :name
+      t.datetime :received_at
 
       t.belongs_to :document, add_index: true
       t.belongs_to :department, add_index: true

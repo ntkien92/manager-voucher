@@ -1,0 +1,59 @@
+div.right_col role="main"
+  .row
+    .col-md-offset-1.col-md-9.col-xs-12
+      .x_panel
+        .x_title
+          h2
+            = I18n.t('documents.form.title')
+          ul.nav.navbar-right.panel_toolbox
+            li
+              a.collapse-link
+                i.fa.fa-chevron-up
+            li
+              a.close-link
+                i.fa.fa-close
+          .clearfix
+        .x_content
+          br
+          .table-responsive
+            table#datatable-buttons.table.table-striped.table-bordered
+              tbody
+                tr
+                  td.td-name
+                    = I18n.t('department_documents.column.department')
+                  td
+                    = @department_document.document.department.name
+                tr
+                  td.td-name
+                    = I18n.t('department_documents.column.content')
+                  td
+                    = simple_format @department_document.document.content
+                tr
+                  td.td-name
+                    = I18n.t('department_documents.column.status')
+                  td
+                    - if @department_document.status == DepartmentDocument::APPROVAL
+                      = I18n.t('department_documents.status.approval')
+                    - else
+                      = I18n.t('department_documents.status.inprogres')
+                tr
+                  td.td-name
+                    = I18n.t('department_documents.column.name')
+                  td
+                    = @department_document.name
+                tr
+                  td.td-name
+                    = I18n.t('department_documents.column.send_date')
+                  td
+                    = @department_document.document.created_at.try(:strftime, "%Y/%m/%d")
+                tr
+                  td.td-name
+                    = I18n.t('department_documents.column.receive_date')
+                  td
+                    = @department_document.received_at.try(:strftime, "%Y/%m/%d")
+          .ln_solid
+          .row
+            .form-group
+              .col-md-9.col-sm-9.col-xs-12.col-md-offset-3
+                = link_to I18n.t('action.back'), :back, class: 'btn btn-primary'
+    .clearfix

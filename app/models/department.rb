@@ -18,7 +18,7 @@ class Department < ApplicationRecord
   acts_as_paranoid
   # == Relationships ========================================================
   has_many :documents
-
+  has_many :department_documents
   # == Validations ==========================================================
 
   # == Scopes ===============================================================

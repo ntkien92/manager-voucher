@@ -27,7 +27,7 @@ div.right_col role="main"
                   td.td-name
                     = I18n.t('documents.column.content')
                   td
-                    = @document.content
+                    = simple_format @document.content
                 tr
                   td.td-name
                     = I18n.t('documents.column.name')
@@ -37,8 +37,8 @@ div.right_col role="main"
                   td.td-name
                     = I18n.t('documents.column.department')
                   td
-                    - @document.department_docments.each do |department_document|
-                      = department_document.department.name
+                    - @document.department_documents.each do |department_document|
+                      = department_document.department.try(:name)
                       br
           .ln_solid
           .row

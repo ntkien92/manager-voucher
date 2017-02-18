@@ -4,59 +4,9 @@ div.right_col role="main"
       .x_panel
         .x_title
           h2
-            = I18n.t('tags.index.title')
-          ul.nav.navbar-right.panel_toolbox
-            li
-              a.collapse-link
-                i.fa.fa-chevron-up
-            li
-              a.close-link
-                i.fa.fa-close
+            = I18n.t('dashboards.title')
           .clearfix
         .x_content
-          .row
-            / = search_form_for @q, html: {class: 'form-horizontal form-label-left form-button-hidden'} do |f|
-              .col-sm-4.col-md-4.col-sm-4.col-xs-4
-                = f.label :content_cont, I18n.t('tags.index.search.content')
-                = f.search_field :content_cont, class: 'form-control input-sm'
-              .clearfix
-              .col-sm-1
-                = f.label :search, style: "visibility: hidden;"
-                = f.submit :search, class: 'btn-info input-sm'
-          br
-          .table-responsive
-            table#datatable-buttons.table.table-striped.table-bordered
-              thead
-                tr
-                  th.table-column-id
-                    = I18n.t('tags.column.id')
-                  th
-                    = I18n.t('tags.column.content')
-                  th.table-column-action
-                    = I18n.t('tags.column.action')
-                tbody
-                  / - @tags.each do |tag|
-                    tr
-                      td
-                        = tag.id
-                      td
-                        = tag.content
-                      td
-                        ul
-                          li
-                            = link_to tag, class: 'btn btn-primary btn-xs btn-custom'
-                              i.fa.fa-folder.fa-custom
-                              = I18n.t('tags.action.show')
-                          li
-                            = link_to edit_tag_path(tag), class: 'btn btn-info btn-xs btn-custom'
-                              i.fa.fa-pencil.fa-custom
-                              = I18n.t('tags.action.edit')
-                          li
-                            = link_to tag, class: 'btn btn-danger btn-xs btn-custom', data: { confirm: I18n.t('tags.index.confirm') }, method: :delete
-                              i.fa.fa-trash-o.fa-custom
-                              = I18n.t('tags.action.destroy')
-          .row
-            .col-sm-6
-              / = paginate @tags, :window => 1
-          / = link_to I18n.t('tags.action.new'), new_tag_path, class: 'btn-info input-sm'
+          h2
+            = link_to I18n.t('dashboards.announce', number:  @number), department_documents_path
 

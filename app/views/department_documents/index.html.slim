@@ -1,0 +1,86 @@
+div.right_col role="main"
+  .row
+    .col-md-12.col-sm-12.col-xs-12
+      .x_panel
+        .x_title
+          h2
+            = I18n.t('documents.index.title')
+          ul.nav.navbar-right.panel_toolbox
+            li
+              a.collapse-link
+                i.fa.fa-chevron-up
+            li
+              a.close-link
+                i.fa.fa-close
+          .clearfix
+        .x_content
+          .row
+            = search_form_for @q, html: {class: 'form-horizontal form-label-left form-button-hidden'} do |f|
+              .col-sm-4.col-md-4.col-sm-4.col-xs-4
+                = f.label :document_content_cont, I18n.t('department_documents.index.search.content')
+                = f.search_field :document_content_cont, class: 'form-control input-sm'
+              .col-sm-4.col-md-4.col-sm-4.col-xs-4
+                = f.label :document_department_id_eq, I18n.t('department_documents.index.search.department')
+                = f.select :document_department_id_eq, departments(current_department.id), { include_blank: true }, { class: 'form-control input-sm' }
+              .col-sm-4.col-md-4.col-sm-4.col-xs-4
+                = f.label :status_eq, I18n.t('department_documents.index.search.status')
+                = f.select :status_eq, status, { include_blank: true }, { class: 'form-control input-sm' }
+              .clearfix
+              .col-sm-1
+                = f.label :search, style: "visibility: hidden;"
+                = f.submit :search, class: 'btn-info input-sm'
+          br
+          .table-responsive
+            table#datatable-buttons.table.table-striped.table-bordered
+              thead
+                tr
+                  th.table-column-id
+                    = I18n.t('department_documents.column.id')
+                  th
+                    = I18n.t('department_documents.column.content')
+                  th
+                    = I18n.t('department_documents.column.department')
+                  th
+                    = I18n.t('department_documents.column.status')
+                  th
+                    = I18n.t('department_documents.column.name')
+                  th
+                    = I18n.t('department_documents.column.send_date')
+                  th
+                    = I18n.t('department_documents.column.receive_date')
+                  th.table-column-action
+                    = I18n.t('department_documents.column.action')
+                tbody
+                  - @department_documents.each do |department_document|
+                    tr
+                      td
+                        = department_document.id
+                      td
+                        = simple_format department_document.document.try(:content)
+                      td
+                        = department_document.document.department.name
+                      td
+                        - if department_document.status == DepartmentDocument::APPROVAL
+                          = I18n.t('department_documents.status.approval')
+                        - else
+                          .mg20
+                            = I18n.t('department_documents.status.inprogres')
+                          = link_to edit_department_document_path(department_document), class: 'btn btn-warning btn-xs btn-custom'
+                            = I18n.t('action.approval')
+                      td
+                        = department_document.name
+                      td
+                        = department_document.document.created_at.try(:strftime, "%Y/%m/%d")
+                      td
+                        = department_document.received_at.try(:strftime, "%Y/%m/%d")
+                      td
+                        ul
+                          li
+                            = link_to department_document, class: 'btn btn-primary btn-xs btn-custom'
+                              i.fa.fa-folder.fa-custom
+                              = I18n.t('action.show')
+          .row
+            .col-sm-6
+              = paginate @department_documents, :window => 1
+          / = link_to I18n.t('department_documents.action.new'), new_document_path, class: 'btn-info input-sm'
+

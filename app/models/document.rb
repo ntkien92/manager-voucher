@@ -20,8 +20,8 @@ class Document < ApplicationRecord
   # == Extensions ===========================================================
   acts_as_paranoid
   # == Relationships ========================================================
-  has_many :department_docments, dependent: :destroy
-  accepts_nested_attributes_for :department_docments, allow_destroy: :true
+  has_many :department_documents, dependent: :destroy
+  belongs_to :department
   # == Validations ==========================================================
 
   # == Scopes ===============================================================

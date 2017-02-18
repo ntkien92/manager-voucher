@@ -15,10 +15,19 @@ div.right_col role="main"
           .clearfix
         .x_content
           .row
-            / = search_form_for @q, html: {class: 'form-horizontal form-label-left form-button-hidden'} do |f|
+            = search_form_for @q, html: {class: 'form-horizontal form-label-left form-button-hidden'} do |f|
               .col-sm-4.col-md-4.col-sm-4.col-xs-4
                 = f.label :content_cont, I18n.t('documents.index.search.content')
                 = f.search_field :content_cont, class: 'form-control input-sm'
+              .col-sm-4.col-md-4.col-sm-4.col-xs-4
+                = f.label :created_at_gteq, I18n.t('documents.index.search.start_date')
+                = f.search_field :created_at_gteq, class: 'form-control input-sm'
+              .col-sm-4.col-md-4.col-sm-4.col-xs-4
+                = f.label :created_at_lteq, I18n.t('documents.index.search.end_date')
+                = f.search_field :created_at_lteq, class: 'form-control input-sm'
+              .col-sm-4.col-md-4.col-sm-4.col-xs-4
+                = f.label :status, I18n.t('documents.index.search.status')
+                = f.select :department_documents_status_eq, status, { include_blank: true }, { class: 'form-control input-sm' }
               .clearfix
               .col-sm-1
                 = f.label :search, style: "visibility: hidden;"
@@ -32,6 +41,10 @@ div.right_col role="main"
                     = I18n.t('documents.column.id')
                   th
                     = I18n.t('documents.column.content')
+                  th
+                    = I18n.t('documents.column.status')
+                  th
+                    = I18n.t('documents.column.send_date')
                   th.table-column-action
                     = I18n.t('documents.column.action')
                 tbody
@@ -40,7 +53,14 @@ div.right_col role="main"
                       td
                         = document.id
                       td
-                        = document.content
+                        = simple_format document.content
+                      td
+                        - document.department_documents.each do |department_document|
+                          - if department_document.department.present?
+                            = "#{department_document.department.try(:name)} : #{department_document.status}"
+                            br
+                      td
+                        = document.created_at.strftime("%Y/%m/%d")
                       td
                         ul
                           li
@@ -57,6 +77,6 @@ div.right_col role="main"
                               = I18n.t('action.destroy')
           .row
             .col-sm-6
-              / = paginate @documents, :window => 1
+              = paginate @documents, :window => 1
           / = link_to I18n.t('documents.action.new'), new_document_path, class: 'btn-info input-sm'
 
