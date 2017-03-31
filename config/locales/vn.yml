@@ -1,0 +1,97 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+vn:
+  title: Manage Documents
+  hello: "Hello world"
+  users:
+    name: Name
+    action:
+      index: Danh sách
+      new: Tạo mới
+  action:
+    show: Xem
+    edit: Sửa
+    destroy: Xoá
+    back: Quay lại
+    index: Danh sách
+    new: Tạo mới
+    approval: Nhận
+    home: Trang chủ
+  dashboards:
+    title: Trang chủ
+    announce: "Bạn có %{number} tài liệu cần xác nhận"
+  documents:
+    send_document: Gửi tài liệu
+    index:
+      title: Danh sách tài liệu
+      search:
+        content: Nội dung
+        status: Trạng thái
+        start_date: Ngày gửi
+        end_date: Ngày nhận
+    column:
+      id: Id
+      content: Nội dung
+      title: Tiêu đề
+      action: Hoạt động
+      name: Người gửi
+      department: Phòng ban
+      status: Trạng thái
+      send_date: Ngày gửi
+    action:
+      edit: Sửa
+    form:
+      cancel: Huỷ
+      submit: Nhập
+      title: Tài liệu
+  department_documents:
+    receive_document: Nhận tài liệu
+    status:
+      inprogres: Đang chờ
+      approval: Đã nhận
+    column:
+      id: Id
+      content: Nội dung
+      action: Hoạt động
+      name: Người nhận
+      status: Trạng thái
+      department: Phòng ban
+      receive_date: Ngày nhận
+      send_date: Ngày gửi
+    index:
+      search:
+        content: Nội dung
+        department: Phòng ban
+        status: Trang thái
+  devise:
+    sessions:
+      new:
+        title: Login Form
+        login: Login
+        email: Email
+        password: Password
+  topnav:
+    logout: Logout
+  home: Home
+  status:
+    inprogres: Inprogres
+    approval: Approval

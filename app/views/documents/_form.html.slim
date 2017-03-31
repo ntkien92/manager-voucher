@@ -36,7 +36,7 @@
               .col-md-9.col-sm-9.col-xs-12
                 = f.text_field :name, autofocus: true, class: 'form-control', placeholder: "Default Input", :required => ""
             .form-group
-              = f.label :department_ids, I18n.t('documents.column.name'), class: 'control-label col-md-3 col-sm-3 col-xs-12'
+              = f.label :department_ids, I18n.t('documents.column.department'), class: 'control-label col-md-3 col-sm-3 col-xs-12'
               .col-md-9.col-sm-9.col-xs-12
                 = f.collection_check_boxes :department_ids, @departments, :id, :name, checked: @department_ids do |b|
                   = b.check_box
