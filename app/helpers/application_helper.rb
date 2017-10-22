@@ -11,4 +11,8 @@ module ApplicationHelper
   def departments(current_department_id)
     Department.where.not(id: current_department_id).map {|department| [department.name, department.id]}
   end
+
+  def departments_all
+    Department.all.map {|department| [department.name, department.id]}
+  end
 end

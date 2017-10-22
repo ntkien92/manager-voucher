@@ -24,9 +24,22 @@ vn:
   hello: "Hello world"
   users:
     name: Name
+    create: Người sử dụng
     action:
       index: Danh sách
       new: Tạo mới
+    index:
+      title: Danh sách
+      search:
+        email: Email
+    form:
+      title: Tạo người sử dụng
+    column:
+      id: Id
+      email: Email
+      department: Phòng ban
+      action: Hoạt động
+      password: Mật khẩu
   action:
     show: Xem
     edit: Sửa
@@ -36,6 +49,7 @@ vn:
     new: Tạo mới
     approval: Nhận
     home: Trang chủ
+    create: Tạo
   dashboards:
     title: Trang chủ
     announce: "Bạn có %{number} tài liệu cần xác nhận"
@@ -82,6 +96,21 @@ vn:
         content: Nội dung
         department: Phòng ban
         status: Trang thái
+  departments:
+    create: Phòng ban
+    action:
+      index: Danh sách
+      new: Tạo mới
+    index:
+      title: Danh sách
+      search:
+        name: Tên
+    form:
+      title: Phòng ban
+    column:
+      id: Id
+      name: Tên
+      action: Hoạt động
   devise:
     sessions:
       new:

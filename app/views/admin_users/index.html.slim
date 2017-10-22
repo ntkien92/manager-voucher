@@ -1,0 +1,63 @@
+div.right_col role="main"
+  .row
+    .col-md-12.col-sm-12.col-xs-12
+      .x_panel
+        .x_title
+          h2
+            = I18n.t('users.index.title')
+          ul.nav.navbar-right.panel_toolbox
+            li
+              a.collapse-link
+                i.fa.fa-chevron-up
+            li
+              a.close-link
+                i.fa.fa-close
+          .clearfix
+        .x_content
+          .row
+            = search_form_for @q, url: admin_users_path, html: {class: 'form-horizontal form-label-left form-button-hidden'} do |f|
+              .col-sm-4.col-md-4.col-sm-4.col-xs-4
+                = f.label :email_cont, I18n.t('users.index.search.email')
+                = f.search_field :email_cont, class: 'form-control input-sm'
+              .col-sm-4.col-md-4.col-sm-4.col-xs-4
+                = f.label :department_id_eq, I18n.t('department_documents.index.search.department')
+                = f.select :department_id_eq, departments_all, { include_blank: true }, { class: 'form-control input-sm' }
+              .clearfix
+              .col-sm-1
+                = f.label :search, style: "visibility: hidden;"
+                = f.submit :search, class: 'btn-info input-sm'
+          br
+          .table-responsive
+            table#datatable-buttons.table.table-striped.table-bordered
+              thead
+                tr
+                  th.table-column-id
+                    = I18n.t('users.column.id')
+                  th
+                    = I18n.t('users.column.email')
+                  th
+                    = I18n.t('users.column.department')
+                  th.table-column-action
+                    = I18n.t('users.column.action')
+                tbody
+                  - if @users
+                    - @users.each do |user|
+                      tr
+                        td
+                          = user.id
+                        td
+                          = user.email
+                        td
+                          = user.department.try(:name)
+                        td
+                          ul
+                            li
+                              = link_to admin_user_path(user), class: 'btn btn-primary btn-xs btn-custom'
+                                i.fa.fa-folder.fa-custom
+                                = I18n.t('action.show')
+          - if @users
+            .row
+              .col-sm-6
+                = paginate @users, :window => 1
+          = link_to I18n.t('users.action.new'), new_admin_user_path, class: 'btn-info input-sm'
+

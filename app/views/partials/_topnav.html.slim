@@ -8,7 +8,7 @@
         li
           a.user-profile.dropdown-toggle[href="javascript:;" data-toggle="dropdown" aria-expanded="false"]
             = image_tag "user.png"
-            = current_department.name
+            = current_department.try(:name)
             span.fa.fa-angle-down
           ul.dropdown-menu.dropdown-usermenu.pull-right
             li

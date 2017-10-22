@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
+  resources :admin_users
   resources :dashboards, only: [:index]
   resources :documents
+  resources :departments
   resources :department_documents, only: [:index, :show, :edit, :update]
   root 'dashboards#index'
 

@@ -1,0 +1,46 @@
+div.right_col role="main"
+  .row
+    .col-md-12.col-sm-12.col-xs-12
+      .x_panel
+        .x_title
+          h2
+            = I18n.t('departments.index.title')
+          ul.nav.navbar-right.panel_toolbox
+            li
+              a.collapse-link
+                i.fa.fa-chevron-up
+            li
+              a.close-link
+                i.fa.fa-close
+          .clearfix
+        .x_content
+          .table-responsive
+            table#datatable-buttons.table.table-striped.table-bordered
+              thead
+                tr
+                  th.table-column-id
+                    = I18n.t('departments.column.id')
+                  th
+                    = I18n.t('departments.column.name')
+                  th.table-column-action
+                    = I18n.t('departments.column.action')
+                tbody
+                  - if @departments
+                    - @departments.each do |department|
+                      tr
+                        td
+                          = department.id
+                        td
+                          = department.name
+                        td
+                          ul
+                            li
+                              = link_to edit_department_path(department), class: 'btn btn-warning btn-xs btn-custom'
+                                i.fa.fa-folder.fa-custom
+                                = I18n.t('action.edit')
+          - if @departments
+            .row
+              .col-sm-6
+                = paginate @departments, :window => 1
+          = link_to I18n.t('departments.action.new'), new_department_path, class: 'btn-info input-sm'
+

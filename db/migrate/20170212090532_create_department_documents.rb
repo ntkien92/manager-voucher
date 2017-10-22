@@ -3,6 +3,7 @@ class CreateDepartmentDocuments < ActiveRecord::Migration[5.0]
     create_table :department_documents do |t|
       t.integer :status, default: 0
       t.string :name
+      t.text :description
       t.datetime :received_at
 
       t.belongs_to :document, add_index: true

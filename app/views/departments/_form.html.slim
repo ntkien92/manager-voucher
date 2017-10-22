@@ -1,0 +1,56 @@
+.right_col[role="main"]
+  .row
+    .col-md-offset-1.col-md-9.col-xs-12
+      .x_panel
+        .x_title
+          h2
+            = I18n.t('departments.form.title')
+          ul.nav.navbar-right.panel_toolbox
+            li
+              a.collapse-link
+                i.fa.fa-chevron-up
+            li
+              a.close-link
+                i.fa.fa-close
+          .clearfix
+        .x_content
+          br
+          = form_for @department, url: url, html: { multipart: true, url: url, method: method.to_sym, class: 'form-horizontal form-label-left' } do |f|
+            - if @department.errors.any?
+                .form-group
+                  #error_explanation.col-md-offset-3.col-sm-offset-3.col-md-9.col-sm-9.col-xs-12
+                    h2 = "#{pluralize(@department.errors.count, "error")} prohibited this department_document from being saved:"
+                    ul
+                      - @department.errors.full_messages.each do |message|
+                        li = message
+            .form-group
+              = f.label :name, I18n.t('departments.column.name'), class: 'control-label col-md-3 col-sm-3 col-xs-12'
+              .col-md-9.col-sm-9.col-xs-12
+                = f.text_field :name, autofocus: true, class: 'form-control', placeholder: "Default Input", :required => ""
+            .ln_solid
+            .form-group
+              .col-md-9.col-sm-9.col-xs-12.col-md-offset-3
+                = link_to I18n.t('documents.form.cancel'), :back, class: 'btn btn-primary'
+                = f.submit I18n.t('documents.form.submit'), class: 'btn btn-success'
+    .clearfix
+
+/ = form_for @document do |f|
+/   - if @document.errors.any?
+/     #error_explanation
+/       h2 = "#{pluralize(@document.errors.count, "error")} prohibited this document from being saved:"
+/       ul
+/         - @document.errors.full_messages.each do |message|
+/           li = message
+
+/   .actions = f.submit
+
+/= form_for @department_document do |f|
+  - if @department_document.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@department_document.errors.count, "error")} prohibited this department_document from being saved:"
+      ul
+        - @department_document.errors.full_messages.each do |message|
+          li = message
+
+  .actions = f.submit
+= link_to 'Back', departments_path
